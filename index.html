@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>צור קשר</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            direction: rtl;
+        }
+        form {
+            margin-top: 30px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin: 10px 0;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #6200ee;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>ברוכים הבאים</h1>
+    <p>אודות החברה:A&R projects מתמחה בפיתוח והטמעה של פתרונות עסקיים חכמים מבוססי Microsoft Excel עבור ארגונים קטנים, בינוניים וגדולים. החברה מספקת שירותי אוטומציה, ניתוח נתונים, בניית דוחות מתקדמים וממשקים מותאמים אישית לצרכי הלקוח.</p>
+
+    <form id="contact-form">
+        <label>שם:</label>
+        <input type="text" name="from_name" required>
+        <label>אימייל:</label>
+        <input type="email" name="reply_to" required>
+        <label>הודעה:</label>
+        <textarea name="message" required></textarea>
+        <button type="submit">שלח</button>
+    </form>
+
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+    <script>
+        emailjs.init("Ed6ccvEXjGg9YLtz5");
+        document.getElementById("contact-form").addEventListener("submit", function(e) {
+            e.preventDefault();
+            emailjs.sendForm("service_0miq6uw", "template_5s7dmxv", this)
+            .then(() => {
+                alert("ההודעה נשלחה בהצלחה!");
+            }, (error) => {
+                alert("שגיאה בשליחה: " + error.text);
+            });
+        });
+    </script>
+</body>
+</html>
